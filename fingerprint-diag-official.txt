@@ -1,0 +1,98 @@
+
+======== device / OS ========
++ cat /etc/sailfish-release
+NAME="Sailfish OS"
+ID=sailfishos
+VERSION="5.1.0.11 (Pispala)"
+VERSION_ID=5.1.0.11
+PRETTY_NAME="Sailfish OS 5.1.0.11 (Pispala)"
+SAILFISH_BUILD=11
+SAILFISH_FLAVOUR=release
+HOME_URL="https://sailfishos.org/"
++ cat /etc/hw-release
+# This file is copied as hw-release (analogous to os-release)
+NAME="Sony Xperia 10 V"
+ID=xqdc54
+MER_HA_DEVICE=xqdc54
+MER_HA_VENDOR=qualcomm
+VERSION="1.0.0.9"
+VERSION_ID=1.0.0.9
+PRETTY_NAME="Xperia 10 V 1.0.0.9"
+SAILFISH_BUILD=9
+SAILFISH_FLAVOUR=release
+HOME_URL="https://sailfishos.org/"
++ uname -a
+Linux Xperia10V 5.4.210-sodp #1 SMP PREEMPT Thu Feb 5 20:27:10 UTC 2026 aarch64 GNU/Linux
++ getprop ro.product.device
+pdx235
++ getprop ro.build.product
+pdx235
++ getprop ro.vendor.build.fingerprint
+Sony/aosp_xqdc54/pdx235:14/AP2A.240905.003/eng.jolla.20250114.141457:user/test-keys
+
+======== RPM fingerprint / lock ========
+nemo-qml-plugin-devicelock-0.4.7-1.15.1.jolla.aarch64
+sailfish-devicelock-fpd-1.2.0-1.3.12.jolla.aarch64
+sailfish-devicelock-libs-1.2.0-1.3.12.jolla.aarch64
+
+======== systemd units (system) ========
+  sailfish-devicelock-encsfa-fpd.service                                                                                                                                                            loaded    active   running   Nemo device lock daemon                                                                                                                             
+● sailfish-fpd.service                                                                                                                                                                              not-found inactive dead      sailfish-fpd.service                                                                                                                                
+  wait_for_keymaster.service                                                                                                                                                                        loaded    active   exited    Fingerprint Daemon preinit                                                                                                                          
+sailfish-devicelock-encsfa-fpd.service                                 disabled 
+
+======== HAL binaries under /vendor /odm ========
+-rwxr-xr-x    1 root     shell        76872 Feb 10  2025 android.hardware.biometrics.fingerprint@2.1-service.sony
+(no matching odm bin)
+/vendor/lib64/android.hardware.biometrics.fingerprint@2.1.so
+/odm/lib64/camera/components/com.qti.node.swregistration.so
+
+======== VINTF manifests ========
+(no finger manifest names)
+/vendor/etc/vintf/manifest.xml:35:        <name>android.hardware.biometrics.fingerprint</name>
+/vendor/etc/vintf/manifest.xml:37:        <fqname>@2.1::IBiometricsFingerprint/default</fqname>
+
+======== binder / hwbinder fingerprint interfaces ========
+(no hwbinder finger)
+(no binder finger)
+
+======== kernel modules / chardevs / sysfs ========
+(no fp modules loaded)
+(no obvious fp chardevs)
+(no /sys/class/fingerprint)
+/sys/class/devlink/soc:fpc_vana_vreg--soc:fp_egistec
+/sys/class/devlink/regulator.16--soc:fp_egistec
+/sys/class/devlink/400000.pinctrl--soc:fp_egistec
+/sys/devices/platform/soc/soc:fp_egistec
+/sys/devices/virtual/devlink/soc:fpc_vana_vreg--soc:fp_egistec
+/sys/devices/virtual/devlink/regulator.16--soc:fp_egistec
+/sys/devices/virtual/devlink/400000.pinctrl--soc:fp_egistec
+/sys/bus/platform/devices/soc:fp_egistec
+/sys/module/msm_performance/parameters/core_ctl_register
+
+======== input devices (egis_fp?) ========
+
+======== TZ / firmware egista ========
+(no egista* under firmware_mnt/image)
+(no egista* under /vendor/firmware)
+/dev/sda31 on /vendor/bt_firmware type vfat (ro,relatime,uid=1002,gid=3002,fmask=0337,dmask=0227,codepage=437,iocharset=iso8859-1,shortname=lower,errors=remount-ro)
+/dev/sda33 on /vendor/firmware_mnt type vfat (ro,relatime,uid=1000,gid=1000,fmask=0337,dmask=0227,codepage=437,iocharset=iso8859-1,shortname=lower,errors=remount-ro)
+/dev/sda2 on /mnt/vendor/persist type ext4 (rw,nosuid,nodev,noatime,seclabel,discard)
+/dev/sda35 on /vendor/dsp type ext4 (ro,nosuid,nodev,relatime,seclabel,nodelalloc,errors=panic,data=ordered)
+/vendor/apex/com.android.hardware.cas.apex on /apex/com.android.hardware.cas@1 type ext4 (ro,nodev,noatime,dirsync,seclabel)
+/vendor/apex/com.android.hardware.cas.apex on /apex/com.android.hardware.cas type ext4 (ro,nodev,noatime,dirsync,seclabel)
+
+======== getprop biometrics ========
+[ro.build.version.preview_sdk_fingerprint]: [REL]
+[ro.system.build.fingerprint]: [Sony/aosp_xqdc54/pdx235:14/AP2A.240905.003/eng.jolla.20250114.141457:user/test-keys]
+[ro.system_ext.build.fingerprint]: [Sony/aosp_xqdc54/pdx235:14/AP2A.240905.003/eng.jolla.20250114.141457:user/test-keys]
+[ro.vendor.build.fingerprint]: [Sony/aosp_xqdc54/pdx235:14/AP2A.240905.003/eng.jolla.20250114.141457:user/test-keys]
+[ro.build.fingerprint]: [Sony/aosp_xqdc54/pdx235:14/AP2A.240905.003/eng.jolla.20241104.193538:user/test-keys]
+[vendor.sys.listeners.registered]: [true]
+
+======== dconf device lock ========
+
+======== recent log hints (best-effort) ========
+
+======== done ========
+Save this output and compare against RESEARCH.md expectations.
